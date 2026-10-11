@@ -1,0 +1,31 @@
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+
+const fieldClass =
+  'flex w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive';
+
+export const Input = React.forwardRef<
+  HTMLInputElement,
+  React.InputHTMLAttributes<HTMLInputElement>
+>(({ className, type, ...props }, ref) => (
+  <input type={type} className={cn(fieldClass, 'h-9', className)} ref={ref} {...props} />
+));
+Input.displayName = 'Input';
+
+export const Textarea = React.forwardRef<
+  HTMLTextAreaElement,
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>
+>(({ className, ...props }, ref) => (
+  <textarea className={cn(fieldClass, 'min-h-[72px] py-2', className)} ref={ref} {...props} />
+));
+Textarea.displayName = 'Textarea';
+
+export const Select = React.forwardRef<
+  HTMLSelectElement,
+  React.SelectHTMLAttributes<HTMLSelectElement>
+>(({ className, children, ...props }, ref) => (
+  <select className={cn(fieldClass, 'h-9 bg-background pr-8', className)} ref={ref} {...props}>
+    {children}
+  </select>
+));
+Select.displayName = 'Select';

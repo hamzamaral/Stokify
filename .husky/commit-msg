@@ -1,0 +1,5 @@
+MSG=$(head -n1 "$1")
+if ! echo "$MSG" | grep -Eq '^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: .+'; then
+  echo "Commit mesajı Conventional Commits formatında olmalı. Örnek: feat(stock): transfer endpoint eklendi"
+  exit 1
+fi
